@@ -5,17 +5,4 @@ export default class TileModel {
     this.column = column;
     this.width = width;
   }
-
-  get(prop) {
-    return this[prop];
-  }
-
-  set(prop, value) {
-    this[prop] = value;
-  }
-
-  setCoordinates(row, column) {
-    this.row = row;
-    this.column = column;
-  }
 }

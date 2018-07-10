@@ -1,39 +1,48 @@
 import Utilities from '../../utilities/utilities.js';
+import Event from '../event/event.js';
 import TileModel from '../tile/tile-model.js';
 
 export default class BoardModel {
-  constructor({ columns, rows, tileWidth }) {
-    this.columns = columns;
+  constructor(rows, columns, tileWidth) {
     this.rows = rows;
+    this.columns = columns;
     this.tileWidth = tileWidth;
-    this.tiles = getTiles(columns, rows, tileWidth);
+    this.tiles = getTiles(rows, columns, tileWidth);
+    this.events = new Event();
   }
 
-  get(prop) {
-    return this[prop];
-  }
+  /**
+   * Checks if the board is solved.
+   * @returns {boolean} Boolean value indicating whether the board is solved or not.
+   */
+  isSolved() {
+    return !this.tiles.some((tile, i, arr) => {
+      const tileValue = tile.value || arr.length; // Set the blank tile's value as the last item.
+      const correctRow = Math.ceil(tileValue / this.columns) - 1;
+      const correctColumn = (tileValue - 1) % this.columns;
+      const isCorrect = tile.row === correctRow && tile.column === correctColumn;
 
-  set(prop, value) {
-    this[prop] = value;
+      return !isCorrect;
+    });
   }
 }
 
 /**
  * Gets the shuffled tiles.
- * @param {number} columns - The number of columns the board has.
  * @param {number} rows - The number of rows the board has.
+ * @param {number} columns - The number of columns the board has.
  * @param {number} tileWidth - The width (and height) of a tile.
  * @returns {[TileModel]} An array of TileModels.
  */
-function getTiles(columns, rows, tileWidth) {
-  const tileCount = columns * rows;
+function getTiles(rows, columns, tileWidth) {
+  const tileCount = rows * columns;
   let currentRow = 0;
   let currentColumn = 0;
   let tileOrder = Array.from({ length: tileCount }, (v, k) => k + 1); // Array starting from 1 to n.
 
   do {
     tileOrder = Utilities.shuffle(tileOrder);
-  } while (!isSolvable(tileOrder, columns, rows));
+  } while (!isSolvable(tileOrder, rows, columns));
 
   return tileOrder.map((v, i, arr) => {
     // The highest value is the blank tile.
@@ -60,11 +69,11 @@ function getTiles(columns, rows, tileWidth) {
 /**
  * Checks if the given tile order is solvable.
  * @param {[number]} tileOrder - An array consisting of shuffled numbers.
- * @param {number} columns - The number of columns the puzzle has.
  * @param {number} rows - The number of rows the puzzle has.
+ * @param {number} columns - The number of columns the puzzle has.
  * @returns {boolean} Boolean value indicating if the shuffled array is solvable or not.
  */
-function isSolvable(tileOrder, columns, rows) {
+function isSolvable(tileOrder, rows, columns) {
   const blankTileRowNumberFromBottom = rows - Math.floor(tileOrder.indexOf(tileOrder.length) / rows); // "...row counting from the bottom (last, third-last, fifth-last etc)"
   let inversions = 0;
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>15 Puzzle</title>
+    <link rel="stylesheet" type="text/css" href="/styles/app.css">
+  </head>
+  <body>
+    <div class="app">
+      <form>
+        <div class="field">
+          <label for="txt-rows">Rows</label>
+          <input type="number" id="txt-rows" min="2" placeholder="Minimum size is 2" oninput="validity.valid || (value='')">
+        </div>
+        <div class="field">
+          <label for="txt-columns">Columns</label>
+          <input type="number" id="txt-columns" min="2" placeholder="Minimum size is 2" oninput="validity.valid || (value='')">
+        </div>
+        <div class="field">
+          <label for="txt-tile-size">Tile Size (px)</label>
+          <input type="number" id="txt-tile-size" min="30" placeholder="Minimum size is 30" oninput="validity.valid || (value='')">
+        </div>
+        <button type="button" id="btn-add" class="btn">Add Board</button>
+      </form>
+    </div>
+    <script src="/utilities/utilities.js" type="module"></script>
+    <script src="/modules/event/event.js" type="module"></script>
+    <script src="/modules/tile/tile-model.js" type="module"></script>
+    <script src="/modules/tile/tile-view.js" type="module"></script>
+    <script src="/modules/tile/tile-controller.js" type="module"></script>
+    <script src="/modules/board/board-constants.js" type="module"></script>
+    <script src="/modules/board/board-model.js" type="module"></script>
+    <script src="/modules/board/board-view.js" type="module"></script>
+    <script src="/modules/board/board-controller.js" type="module"></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

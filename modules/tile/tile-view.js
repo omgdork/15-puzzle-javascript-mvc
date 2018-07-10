@@ -8,9 +8,7 @@ export default class TileView {
    * Moves the tile element to its latest coordinates.
    */
   move() {
-    const row = this.model.get('row');
-    const column = this.model.get('column');
-    const width = this.model.get('width');
+    const { row, column, width } = this.model;
 
     this.element.style.top = `calc(${row * width}px + 5px)`;
     this.element.style.left = `calc(${column * width}px + 5px)`;
@@ -42,9 +40,9 @@ function generateElement({ value, row, column, width }) {
 
   element.style = `
     height: ${tileWidth};
-    left: calc(${row * width}px + 5px);
+    left: calc(${column * width}px + 5px);
     line-height: ${tileWidth};
-    top: calc(${column * width} + 5px);
+    top: calc(${row * width}px + 5px);
     width: ${tileWidth};
   `;
 

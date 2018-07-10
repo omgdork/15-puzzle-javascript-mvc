@@ -1,0 +1,23 @@
+{
+  "name": "15-puzzle-javascript-mvc",
+  "version": "1.0.0",
+  "description": "Work in progress :)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node node_modules/http-server/bin/http-server -p 3000 --offline -a localhost -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omgdork/15-puzzle-javascript-mvc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omgdork/15-puzzle-javascript-mvc/issues"
+  },
+  "homepage": "https://github.com/omgdork/15-puzzle-javascript-mvc#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}

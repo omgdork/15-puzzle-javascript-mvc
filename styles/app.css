@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
+html, body {
+  font: normal 14px/1.4 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
+}
+
+.app {
+  padding: 0 20px;
+}
+
+.field {
+  align-items: center;
+  display: flex;
+  margin: 5px 0;
+}
+
+.field label {
+  flex: 0 0 100px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.field input {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.field input[type=number] {
+  width: 150px;
+}
+
+.btn {
+  background: #eee;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+.board-container {
+  border-bottom: 1px solid #eee;
+  margin: 20px 0;
+  padding: 0 0 20px;
+  text-align: center;
+}
+
+.board-container:last-child {
+  border: 0;
+  margin: 20px 0 0;
+}
+
+.board {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  position: relative;
+}
+
+.tile {
+  background: #ddd;
+  cursor: pointer;
+  font-size: 2vmin;
+  font-weight: 600;
+  position: absolute;
+  text-align: center;
+  transition: all 100ms ease-out;
+  vertical-align: top;
+}
+
+.tile.null {
+  background: transparent;
+}
+
+.board.solved .tile,
+.tile.null {
+  cursor: default;
+}
+
+.message {
+  display: none;
+}
+
+.message.shown {
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #1a531b;
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px 0;
+  padding: 10px;
+}
